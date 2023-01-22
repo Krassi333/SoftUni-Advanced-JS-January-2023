@@ -7,6 +7,8 @@ function solve() {
     let listOfMails = document.getElementById('list');
     let sendMails = document.getElementsByClassName('sent-list');
     sendMails = sendMails[0];
+    let deletedSection = document.getElementsByClassName('delete-list');
+    deletedSection = deletedSection[0];
 
     resetBtn.addEventListener('click', () => {
         recipientField.value = '';
@@ -94,8 +96,16 @@ function solve() {
                 console.log(targetBtn);
                 let parentEl = targetBtn.parentElement.parentElement;
                 parentEl.remove();
-                console.log(parentEl);
 
+                let li = document.createElement('li');
+                deletedSection.appendChild(li);
+                let firstSpan = document.createElement('span');
+                firstSpan.innerText = `To: ${info.recipient}`;
+                li.appendChild(firstSpan);
+
+                let secondSpan = document.createElement('span');
+                secondSpan.innerText = `Title: ${info.title}`;
+                li.appendChild(secondSpan);
 
             }
 
